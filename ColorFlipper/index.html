@@ -28,22 +28,53 @@
             border: none;
             border-radius: 15px;
             box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+            transition: background-color .3s ease;
+        }
+
+        #change-btn:hover{
+            background-color: #f7f7f7;
+            color: #050708;
+            
         }
     </style>
 
     <script>
-        function color() {
-            // Generate random values for RGB
-            let red = Math.floor(Math.random() * 256);
-            let green = Math.floor(Math.random() * 256);
-            let blue = Math.floor(Math.random() * 256);
+        let isWhite = false; // Flag to track button color
 
-            // Corrected the typo here
-            let color = "rgb(" + red + "," + green + "," + blue + ")";
+function color() {
+    const button = document.getElementById("change-btn");
+    let red, green, blue;
 
-            // Apply the random color to the button's background
-            document.getElementById("backg").style.backgroundColor = color;
-        }
+        red = Math.floor(Math.random() * 256);
+        green = Math.floor(Math.random() * 256);
+        blue = Math.floor(Math.random() * 256);
+        
+        let color = "rgb(" + red + "," + green + "," + blue + ")"; 
+        document.getElementById("backg").style.backgroundColor = color
+    if (isWhite) {
+        // Generate random values for RGB
+        red = Math.floor(Math.random()* 256);
+        green = Math.floor(Math.random()* 256);
+        blue = Math.floor(Math.random()* 256);
+
+        // Create random RGB color
+        let color = "rgb(" + red + "," + green + "," + blue + ")";
+
+        // Apply the random color to the button's background
+        button.style.backgroundColor = color;
+        button.style.color = "#e9e9ec"; // Set text color back to original
+
+        isWhite = false; // Update flag
+    } else {
+        // Change button to white background
+        button.style.backgroundColor = "#ffffff";
+        button.style.color = "#050709"; // Set text color for contrast
+
+        isWhite = true; // Update flag
+    }
+
+
+}
     </script>
 </head>
 <body id="backg">
